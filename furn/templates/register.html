@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Adoption</title>
+
+    <link href="/static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="/static/css/register.css" rel="stylesheet" media="all">
+
+    {% if user_form.errors %}
+    <script>
+      {% for field in user_form %}
+          {% for error in field.errors %}
+              alert("{{ error }}")
+          {% endfor %}
+      {% endfor %}
+    </script>
+    {% endif %}
+
+    {% if profile_form.errors %}
+      <script>
+        {% for field in profile_form %}
+            {% for error in field.errors %}
+                alert("{{ error }}")
+            {% endfor %}
+        {% endfor %}
+      </script>
+    {% endif %}
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Register</h2>
+                    <form class="form-detail" method="post" enctype="multipart/form-data" id="regform" name="get_data">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            {{ profile_form.name}}
+                        </div>
+                        <div class="input-group">
+                            {{ user_form.username }}
+                        </div>
+                        <div class="input-group">
+                            {{ user_form.password }}
+                        </div>
+                        <div class="input-group">
+                            {{ profile_form.email }}
+                        </div>
+                        <div class="input-group">
+                            {{ profile_form.phone }}
+                        </div>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <div class="select-dropdown">
+                                  {{ profile_form.gender }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-10">
+                            <input type="hidden" name="register_button" value="1">
+                            <input class="btn btn--pill btn--green" type="submit" value="Register"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/select2/select2.min.js"></script>
+    <script src="/static/vendor/datepicker/moment.min.js"></script>
+    <script src="/static/vendor/datepicker/daterangepicker.js"></script>
+    <script src="/static/js/global.js"></script>
+
+</body>
+
+</html>
