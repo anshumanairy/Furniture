@@ -8,11 +8,19 @@ class UserForm(forms.ModelForm):
 
     class Meta():
         model = User
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'input--style-3', 'placeholder': 'Username'}),
+            'password': forms.PasswordInput(attrs={'class': 'input--style-3', 'placeholder': 'Password'}),
+        }
         fields = ('username','password')
 
 
 class profileForm(forms.ModelForm):
-
     class Meta():
         model = user_detail
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'input--style-3', 'placeholder': 'Name'}),
+            'phone': forms.TextInput(attrs={'class': 'input--style-3', 'placeholder': 'Phone Number'}),
+            'email': forms.TextInput(attrs={'class': 'input--style-3', 'placeholder': 'Email'}),
+        }
         fields = ('name','gender','phone','email')

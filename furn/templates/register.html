@@ -36,46 +36,46 @@
 
 <body>
     <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w780">
+      <div class="wrapper wrapper--w780">
 
-            <!-- Register Modal and Form -->
-            <div class="card card-3" id="register_Modal">
-                <div class="card-heading"></div>
-                <div class="card-body">
-                    <h2 class="title">Register</h2>
-                    <form class="form-detail" method="post" enctype="multipart/form-data" id="regform" name="get_data">
-                        {% csrf_token %}
-                        <div class="input-group">
-                            {{ profile_form.name}}
-                        </div>
-                        <div class="input-group">
-                            {{ user_form.username }}
-                        </div>
-                        <div class="input-group">
-                            {{ user_form.password }}
-                        </div>
-                        <div class="input-group">
-                            {{ profile_form.email }}
-                        </div>
-                        <div class="input-group">
-                            {{ profile_form.phone }}
-                        </div>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <div class="select-dropdown">
-                                  {{ profile_form.gender }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-t-10">
-                            <input type="hidden" name="register_button" value="1">
-                            <input class="btn btn--pill btn--green" type="submit" value="Register"/>
-                        </div>
-                    </form>
-                    <div class="p-t-10" align=center>
-                      <button class="bottom-link" data-toggle="modal" data-target="#login_modal" id="login_link_btn" onclick="login_open()"><u>Login</u></button>
-                    </div>
-                </div>
+          <!-- Register Modal and Form -->
+          <div class="card card-3" id="register_Modal">
+              <div class="card-heading"></div>
+              <div class="card-body">
+                  <h2 class="title">Register</h2>
+                  <form class="form-detail" method="post" enctype="multipart/form-data" id="regform" name="get_data">
+                      {% csrf_token %}
+                      <div class="input-group">
+                          {{ profile_form.name}}
+                      </div>
+                      <div class="input-group">
+                          {{ user_form.username }}
+                      </div>
+                      <div class="input-group">
+                          {{ user_form.password }}
+                      </div>
+                      <div class="input-group">
+                          {{ profile_form.email }}
+                      </div>
+                      <div class="input-group">
+                          {{ profile_form.phone }}
+                      </div>
+                      <div class="input-group">
+                          <div class="rs-select2 js-select-simple select--no-search">
+                              <div class="select-dropdown">
+                                {{ profile_form.gender }}
+                              </div>
+                          </div>
+                      </div>
+                      <div class="p-t-10">
+                          <input type="hidden" name="register_button" value="1">
+                          <input class="btn btn--pill btn--green" type="submit" value="Register"/>
+                      </div>
+                  </form>
+                  <div class="p-t-10" align=center>
+                    <button class="bottom-link" data-toggle="modal" data-target="#login_modal" id="login_link_btn" onclick="login_open()"><u>Login</u></button>
+                  </div>
+              </div>
             </div>
 
             <!-- Login Modal and Form -->
