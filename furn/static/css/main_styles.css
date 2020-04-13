@@ -109,11 +109,11 @@ p a:hover::after
 }
 ::selection
 {
-	
+
 }
 p::selection
 {
-	
+
 }
 h1{font-size: 48px;}
 h2{font-size: 36px;}
@@ -127,14 +127,14 @@ h1, h2, h3, h4, h5, h6
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-h1::selection, 
-h2::selection, 
-h3::selection, 
-h4::selection, 
-h5::selection, 
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
 h6::selection
 {
-	
+
 }
 .form-control
 {
@@ -296,6 +296,76 @@ section
 .button_light:hover a
 {
 	color: #1b1b1b;
+}
+
+
+.button1
+{
+	width: 178px;
+	height: 61px;
+	background: none;
+	text-align: center;
+	border: solid 2px white;
+	overflow: hidden;
+	cursor: pointer;
+}
+.button1 a
+{
+	display: block;
+	position: relative;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 57px;
+	color: white;
+	background: none;
+	z-index: 1;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.button1::after
+{
+	content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 100%;
+    background: black;
+    z-index: 0;
+    opacity: 0;
+    -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s;
+    transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+}
+.button1:hover::after
+{
+	opacity: 1;
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.button_light1
+{
+	border: solid 2px black;
+}
+.button_light1 a
+{
+	color: black;
+}
+.button1:hover a
+{
+	color: black;
+}
+.button_light1:hover a
+{
+	color: white;
 }
 
 /*********************************
@@ -575,9 +645,9 @@ section
 	font-weight: 400 !important;
 	font-style: italic;
 	color: #767676 !important;
-} 
+}
 .search_input:-ms-input-placeholder
-{ 
+{
 	font-size: 14px !important;
 	font-weight: 400 !important;
 	font-style: italic;
@@ -833,8 +903,8 @@ section
 .home_slider_content_container
 {
 	position: absolute;
-	left: 0;
-	top: 32.3%;
+	left: 25%;
+	top: 10%;
 	width: 100%;
 }
 .home_slider_content
@@ -859,6 +929,27 @@ section
 .home_button
 {
 	margin-top: 40px;
+}
+.home_slider_title1
+{
+	font-size: 60px;
+	font-weight: 600;
+	color: black;
+	line-height: 1.2;
+}
+.home_slider_subtitle1
+{
+	font-size: 14px;
+	font-weight: 400;
+	color: black;
+	line-height: 2.14;
+	margin-top: 22px;
+}
+.home_button1
+{
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
 }
 .home_slider_dots_container
 {
