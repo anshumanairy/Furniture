@@ -10,12 +10,12 @@ from furn.controller import admin
 from django.conf.urls import url,include
 
 urlpatterns = [
-    url(r'^$',home.base,name="home"),
+    url(r'^$',register.reg,name="register"),
     url(r'^cart',cart.bag,name="cart"),
     url(r'^categories',categories.category,name="categories"),
     url(r'^checkout',checkout.purchase,name="checkout"),
     url(r'^contact',contact.contact,name="contact"),
+    url(r'^home',home.base,name="home"),
     url(r'^product',product.prod,name="product"),
-    url(r'^register',register.reg,name="register"),
     url(r'^admin',admin.admin,name="admin"),
 ]

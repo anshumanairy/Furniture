@@ -13,6 +13,14 @@
     <link href="/static/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
     <link href="/static/css/register.css" rel="stylesheet" media="all">
 
+    {% if messages %}
+      <script>
+        {% for message in messages %}
+          alert("{{ message }}");
+        {% endfor %}
+      </script>
+    {% endif %}
+
     {% if user_form.errors %}
     <script>
       {% for field in user_form %}
@@ -39,7 +47,7 @@
       <div class="wrapper wrapper--w780">
 
           <!-- Register Modal and Form -->
-          <div class="card card-3" id="register_Modal">
+          <div class="card card-3" id="register_Modal" style="display:none">
               <div class="card-heading"></div>
               <div class="card-body">
                   <h2 class="title">Register</h2>
@@ -79,10 +87,10 @@
             </div>
 
             <!-- Login Modal and Form -->
-            <div class="card card-3" id="login_Modal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:none">
+            <div class="card card-3" id="login_Modal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="card-heading-login" style="padding-bottom:35%">
                 <h2 class="title-login">Login</h2>
-                <form class="form-detail" method="post" enctype="multipart/form-data" id="login_form">
+                <form class="form-detail" method="get" enctype="multipart/form-data" id="login_form">
                   <div class="input-group">
                       <input class="input--style-3" type="text" placeholder="Username" name="username">
                   </div>

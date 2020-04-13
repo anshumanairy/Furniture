@@ -25,6 +25,22 @@ from furn.models.register_model import user_detail
 
 
 def reg(request):
+    # Login
+    if request.method == 'GET':
+        if 'login_button' in request.GET:
+            username = request.GET.get('username')
+            password = request.GET.get('password')
+            if User.objects.filter(username=username).exists() == True:
+                user = authenticate(username = username, password=password)
+                if user:
+                    login(request,user)
+                    return redirect('home')
+                else:
+                    messages.info(request, 'Invalid Account Details! Please Check!')
+            else:
+                messages.info(request, 'Invalid Account Details! Please Check!')
+
+    # Register
     if request.method == 'POST':
         if 'register_button' in request.POST:
             user_form = UserForm(request.POST)
@@ -34,9 +50,11 @@ def reg(request):
                 profile = profile_form.save(commit=False)
                 profile.user = user
                 user.email = profile.email
+                # Password Hasing Encryption of Django. Works in combination with the password hashers in settings.py
+                user.set_password(user.password)
                 user.save()
                 profile.save()
-                return redirect('home')
+                return redirect('/')
     else:
         user_form = UserForm()
         profile_form = profileForm()
