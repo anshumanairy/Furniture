@@ -224,6 +224,13 @@ h6 {
   max-width: 680px;
 }
 
+.bottom-link {
+  cursor: pointer;
+  font-family: Poppins, Arial, "Helvetica Neue", sans-serif;
+  color: #fff;
+  font-size: 14px;
+}
+
 /* ==========================================================================
    #BUTTON
    ========================================================================== */
@@ -473,6 +480,13 @@ input {
   margin-bottom: 36px;
 }
 
+.title-login {
+  font-size: 24px;
+  color: white;
+  font-weight: 400;
+  margin-bottom: 36px;
+}
+
 /* ==========================================================================
    #CARD
    ========================================================================== */
@@ -506,6 +520,18 @@ input {
   padding: 57px 65px;
   padding-bottom: 65px;
   display: table-cell;
+}
+
+.card-3 .card-heading-login {
+  padding: 57px 65px;
+  padding-bottom: 65px;
+  display: table-cell;
+}
+
+.card-3 .card-body-login {
+  background: url("../images/register_standee.jpg") top left/cover no-repeat;
+  display: table-cell;
+  width: 50%;
 }
 
 @media (max-width: 767px) {

@@ -37,7 +37,9 @@
 <body>
     <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
         <div class="wrapper wrapper--w780">
-            <div class="card card-3">
+
+            <!-- Register Modal and Form -->
+            <div class="card card-3" id="register_Modal">
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Register</h2>
@@ -70,15 +72,60 @@
                             <input class="btn btn--pill btn--green" type="submit" value="Register"/>
                         </div>
                     </form>
+                    <div class="p-t-10" align=center>
+                      <button class="bottom-link" data-toggle="modal" data-target="#login_modal" id="login_link_btn" onclick="login_open()"><u>Login</u></button>
+                    </div>
                 </div>
             </div>
+
+            <!-- Login Modal and Form -->
+            <div class="card card-3" id="login_Modal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:none">
+              <div class="card-heading-login" style="padding-bottom:35%">
+                <h2 class="title-login">Login</h2>
+                <form class="form-detail" method="post" enctype="multipart/form-data" id="login_form">
+                  <div class="input-group">
+                      <input class="input--style-3" type="text" placeholder="Username" name="username">
+                  </div>
+                  <div class="input-group">
+                      <input class="input--style-3" type="password" placeholder="Password" name="password">
+                  </div>
+                  <div class="p-t-10">
+                      <input type="hidden" name="login_button" value="1">
+                      <input class="btn btn--pill btn--green" type="submit" value="Login"/>
+                  </div>
+                </form>
+                <div class="p-t-10" align=center>
+                  <button class="bottom-link" data-toggle="modal" data-target="#register_modal" id="login_link_btn" onclick="login_close()"><u>Register</u></button>
+                </div>
+              </div>
+              <div class="card-body-login"></div>
+            </div>
+
         </div>
-    </div>
+      </div>
+
+    <!-- Login Modal Scripting Start-->
+    <div id="login_modal_div">
+    <script>
+      function login_open() {
+        document.getElementById("login_modal_div").style.marginTop = "0%";
+        document.getElementById("login_link_btn").style.display = 'block';
+        document.getElementById("login_Modal").style.display = "table";
+        document.getElementById("register_Modal").style.display = "none";
+      }
+      function login_close() {
+        document.getElementById("login_modal_div").style.marginTop = "0%";
+        document.getElementById("login_link_btn").style.display = "block";
+        document.getElementById("login_Modal").style.display = "none";
+        document.getElementById("register_Modal").style.display = "table";
+      }
+    </script>
+    <!-- Login Modal Scripting End-->
 
     <script src="/static/vendor/jquery/jquery.min.js"></script>
     <script src="/static/vendor/select2/select2.min.js"></script>
     <script src="/static/vendor/datepicker/moment.min.js"></script>
-    <script src="/static/vendor/datepicker/daterangepicker.js"></script>
+    <!-- <script src="/static/vendor/datepicker/daterangepicker.js"></script> -->
     <script src="/static/js/global.js"></script>
 
 </body>
