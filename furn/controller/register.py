@@ -59,3 +59,12 @@ def reg(request):
         user_form = UserForm()
         profile_form = profileForm()
     return render(request,'register.html/',{'user_form':user_form , 'profile_form':profile_form})
+
+@login_required(login_url='/')
+def user_logout(request):
+    logout(request)
+    # request.session.flush()
+    response = redirect('/')
+    response.delete_cookie('sessionid', domain="127.0.0.1",path='/')
+    response.delete_cookie('csrftoken', domain="127.0.0.1",path='/')
+    return response
