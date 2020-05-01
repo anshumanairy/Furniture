@@ -10,6 +10,12 @@ from furn.controller import register
 from furn.controller import admin
 from django.conf.urls import url,include
 
+from furn.controller import returns
+from furn.controller import saved_address
+from furn.controller import your_ads
+from furn.controller import your_orders
+from furn.controller import your_wishlist
+
 urlpatterns = [
     url(r'^$',register.reg,name="register"),
     url(r'^cart',cart.bag,name="cart"),
@@ -20,4 +26,9 @@ urlpatterns = [
     url(r'^product',product.prod,name="product"),
     url(r'^profile',profile.profile,name="profile"),
     url(r'^admin',admin.admin,name="admin"),
+    url(r'^returns',returns.returns,name="returns"),
+    url(r'^address',saved_address.address,name="address"),
+    url(r'^ads',your_ads.ads,name="ads"),
+    url(r'^orders',your_orders.orders,name="orders"),
+    url(r'^wishlist',your_wishlist.wishlist,name="wishlist"),
 ]

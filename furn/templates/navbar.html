@@ -41,10 +41,12 @@
                 <li class="hassubs">
                   <a href="#">Account</a>
                   <ul>
-                    <li><a href="#">Your Ads</a></li>
-                    <li><a href="#">Your Wish List</a></li>
+                    <li><a href="{% url 'ads' %}">Your Ads</a></li>
+                    <li><a href="{% url 'orders' %}">Your Orders</a></li>
+                    <li><a href="{% url 'wishlist' %}">Your Wish List</a></li>
                     <li><a href="{% url 'profile' %}">Your Settings</a></li>
-                    <li><a href="#">Saved Addresses</a></li>
+                    <li><a href="{% url 'address' %}">Saved Addresses</a></li>
+                    <li><a href="{% url 'returns' %}">Return/Cancel</a></li>
                     <li><a href="{% url 'contact' %}">Contact Us</a></li>
                     <li><a href="{% url 'register' %}">Logout</a></li>
                   </ul>
