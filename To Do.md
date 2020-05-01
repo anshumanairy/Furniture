@@ -1,0 +1,21 @@
+Things to Do: Project Furniture:
+- [ ] Pagination in respective furniture pages.
+- [ ] Login/Sign Up/OTP
+- [ ] My Profile
+- [ ] My Published Ads
+- [ ] Whole Process of publishing an adoption ad after sign in
+- [ ] Like and comment option for each furniture ad
+- [ ] Chat
+- [ ] Filters 
+- [ ] Sorting
+- [ ] Offers
+- [ ] Deals
+- [ ] Donate Us
+- [ ] Furniture Shops Listing and Contacts
+- [ ] Complaints
+- [ ] Server to store images of furnitures securely
+- [ ] Replace maps in contacts page with google maps
+- [ ] Elastic Search or Any other
+- [ ] Logo for the Website and svg for tab bar logo
+- [ ] Setting up the backend for newsletter subscription
+- [ ] ConnectionResetError: [Errno 54] Connection reset by peer
