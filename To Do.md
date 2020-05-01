@@ -1,4 +1,4 @@
-Things to Do: Project Furniture :
+Things to Do: Project Furniture:
 - [ ] Pagination in respective furniture pages.
 - [ ] Login/Sign Up/OTP
 - [ ] My Profile
