@@ -25,5 +25,10 @@ from furn.models.register_model import user_detail
 @login_required(login_url='/')
 def profile(request):
     details = user_detail.objects.get(user_id = request.user.id)
+    username = request.user.username
+    name = details.name
+    gender = details.gender
+    mobile = details.phone
+    email = details.email
     profile_picture = details.profile_picture
-    return render(request,'profile.html/',{'profile_picture':profile_picture})
+    return render(request,'profile.html/',{'username':username, 'name':name, 'gender':gender, 'mobile':mobile, 'email':email, 'profile_picture':profile_picture})

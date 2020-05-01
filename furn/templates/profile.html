@@ -37,11 +37,17 @@
                 <div class="personal_text">
                   <br><br>
                   <p style="font-size:45px"><b>Peronal Details</b></p>
-                  <p style="font-size:20px">Name: </p>
-                  <p style="font-size:20px">Username: </p>
-                  <p style="font-size:20px">Gender: </p>
-                  <p style="font-size:20px">Mobile: </p>
-                  <p style="font-size:20px">Email: </p>
+                  <p style="font-size:20px">Name: {{name}}</p>
+                  <p style="font-size:20px">Username: {{username}}</p>
+                  {% if gender == 'm' %}
+                    <p style="font-size:20px">Gender: Male</p>
+                  {% elif gender == 'f' %}
+                    <p style="font-size:20px">Gender: Female</p>
+                  {% else %}
+                    <p style="font-size:20px">Gender: Other</p>
+                  {% endif %}
+                  <p style="font-size:20px">Mobile: {{mobile}}</p>
+                  <p style="font-size:20px">Email: {{email}}</p>
                 </div>
               </div>
             </div>
