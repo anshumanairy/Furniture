@@ -5,6 +5,7 @@ from furn.controller import categories
 from furn.controller import checkout
 from furn.controller import contact
 from furn.controller import product
+from furn.controller import profile
 from furn.controller import register
 from furn.controller import admin
 from django.conf.urls import url,include
@@ -17,5 +18,6 @@ urlpatterns = [
     url(r'^contact',contact.contact,name="contact"),
     url(r'^home',home.base,name="home"),
     url(r'^product',product.prod,name="product"),
+    url(r'^profile',profile.profile,name="profile"),
     url(r'^admin',admin.admin,name="admin"),
 ]

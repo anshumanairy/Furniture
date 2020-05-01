@@ -13,6 +13,7 @@ class user_detail(models.Model):
     gender = models.CharField(max_length=6, choices=gender, default="Male")
     phone = models.CharField(max_length=10)
     email = models.EmailField(max_length=20)
+    profile_picture = models.ImageField(upload_to='Profile', blank=True)
 
     def __str__(self):
         return self.user.email
