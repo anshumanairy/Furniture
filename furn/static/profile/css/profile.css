@@ -33,3 +33,12 @@ transition: all 0.4s ease 0s;
 .table{
   margin-bottom: 0px;
 }
+input{
+  border: white;
+  transition: all 0.4s ease 0s;
+}
+input:hover{
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  transition: all 0.4s ease 0s;
+}
