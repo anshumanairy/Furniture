@@ -34,7 +34,7 @@ transition: all 0.4s ease 0s;
   margin-bottom: 0px;
 }
 input{
-  border: white;
+  border: 1px solid white;
   transition: all 0.4s ease 0s;
 }
 input:hover{

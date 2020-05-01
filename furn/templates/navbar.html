@@ -27,16 +27,7 @@
             <div class="logo"><a href="#">Sublime.</a></div>
             <nav class="main_nav">
               <ul>
-                <li class="hassubs active">
-                  <a href="{% url 'home' %}">Home</a>
-                  <ul>
-                    <li><a href="{% url 'categories' %}">Categories</a></li>
-                    <li><a href="{% url 'product' %}">Product</a></li>
-                    <li><a href="{% url 'cart' %}">Cart</a></li>
-                    <li><a href="{% url 'checkout' %}">Check out</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                  </ul>
-                </li>
+                <li><a href="{% url 'home' %}">Home</a></li>
                 <li class="hassubs">
                   <a href="{% url 'categories' %}">Categories</a>
                   <ul>
@@ -44,18 +35,17 @@
                     <li><a href="{% url 'product' %}">Product</a></li>
                     <li><a href="{% url 'cart' %}">Cart</a></li>
                     <li><a href="{% url 'checkout' %}">Check out</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Accessories</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
                 <li class="hassubs">
-                  <a href="#">My Profile</a>
+                  <a href="#">Account</a>
                   <ul>
-                    <li><a href="#">My Products</a></li>
-                    <li><a href="#">My Wishlist</a></li>
-                    <li><a href="{% url 'profile' %}">My Settings</a></li>
+                    <li><a href="#">Your Ads</a></li>
+                    <li><a href="#">Your Wish List</a></li>
+                    <li><a href="{% url 'profile' %}">Your Settings</a></li>
                     <li><a href="#">Saved Addresses</a></li>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
                     <li><a href="{% url 'register' %}">Logout</a></li>
                   </ul>
                 </li>
