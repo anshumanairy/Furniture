@@ -12,7 +12,6 @@ from django.conf.urls import url,include
 
 from furn.controller import returns
 from furn.controller import saved_address
-from furn.controller import your_ads
 from furn.controller import your_orders
 from furn.controller import your_wishlist
 
@@ -28,7 +27,6 @@ urlpatterns = [
     url(r'^admin',admin.admin,name="admin"),
     url(r'^returns',returns.returns,name="returns"),
     url(r'^address',saved_address.address,name="address"),
-    url(r'^ads',your_ads.ads,name="ads"),
     url(r'^orders',your_orders.orders,name="orders"),
     url(r'^wishlist',your_wishlist.wishlist,name="wishlist"),
 ]
