@@ -21,18 +21,39 @@ from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
 from furn.models.product_model import product_upload
+from furn.models.image_model import ImageManager, Image
+from furn.controller import display_picture
 
 @login_required(login_url='/')
 def prod(request):
-    return render(request,'product.html/',{})
+    # procode set to 1, which is according to the product in my db, change accordingly when testing
+    profile_picture = display_picture.check_admin(request)
+    product = product_upload.objects.get(product_code=1)
+    image = Image.objects.filter(object_id=1)
+    images = []
+    main_image=image[0].img
+    for i in image:
+        images.append(i.img)
+    return render(request,'product.html/',{'profile_picture':profile_picture,'product':product,'images':images,'main_image':main_image})
 
 def prod_detail(request,procode):
+    profile_picture = display_picture.check_admin(request)
     obj = get_object_or_404(product_upload,product_code=procode)
-    img = obj.get_images
+    img = obj.get_image
+
+    product = product_upload.objects.get(product_code=procode)
+    image = Image.objects.filter(object_id=procode)
+    images = []
+    main_image=image[0].img
+    for i in image:
+        images.append(i.img)
+
     context = {
-        'product' : obj,
-        'images' : img,
+        'profile_picture' : profile_picture,
+        'product':product,
+        'images':images,
+        'main_image':main_image
     }
-    print("##debug")
-    print(obj,img)
+    # print("##debug")
+    # print(product)
     return render(request,'product.html/',context)

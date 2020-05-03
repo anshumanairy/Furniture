@@ -23,6 +23,6 @@ from django.utils import timezone
 from furn.controller import display_picture
 
 @login_required(login_url='/')
-def wishlist(request):
+def track(request):
     profile_picture = display_picture.check_admin(request)
-    return render(request,'your_wishlist.html/',{'profile_picture':profile_picture})
+    return render(request,'track_order.html/',{'profile_picture':profile_picture})

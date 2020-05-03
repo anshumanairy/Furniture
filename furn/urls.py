@@ -11,6 +11,7 @@ from furn.controller import admin
 from django.conf.urls import url,include
 
 from furn.controller import returns
+from furn.controller import track_order
 from furn.controller import saved_address
 from furn.controller import your_orders
 from furn.controller import your_wishlist
@@ -21,12 +22,13 @@ urlpatterns = [
     url(r'^categories',categories.category,name="categories"),
     url(r'^checkout',checkout.purchase,name="checkout"),
     url(r'^contact',contact.contact,name="contact"),
-    url(r'^home',home.base,name="home"),
+    url(r'^home',home.home,name="home"),
     url(r'^product/$',product.prod,name="product"),
     url(r'^product/(?P<procode>[-a-zA-Z0-9_]+)',product.prod_detail,name="product_detail"),
     url(r'^profile',profile.profile,name="profile"),
     url(r'^admin',admin.admin,name="admin"),
     url(r'^returns',returns.returns,name="returns"),
+    url(r'^track',track_order.track,name="track"),
     url(r'^address',saved_address.address,name="address"),
     url(r'^orders',your_orders.orders,name="orders"),
     url(r'^wishlist',your_wishlist.wishlist,name="wishlist"),

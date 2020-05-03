@@ -20,9 +20,13 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
-from furn.controller import display_picture
+from furn.models.register_model import user_detail
 
 @login_required(login_url='/')
-def wishlist(request):
-    profile_picture = display_picture.check_admin(request)
-    return render(request,'your_wishlist.html/',{'profile_picture':profile_picture})
+def check_admin(request):
+    check = User.objects.get(id = request.user.id)
+    profile_picture = ''
+    if check.is_superuser == False:
+        details = user_detail.objects.get(user_id = request.user.id)
+        profile_picture = details.profile_picture
+    return profile_picture
