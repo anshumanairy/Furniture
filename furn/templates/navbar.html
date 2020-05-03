@@ -24,35 +24,31 @@
       <div class="row">
         <div class="col">
           <div class="header_content d-flex flex-row align-items-center justify-content-start">
-            <div class="logo"><a href="#">Sublime.</a></div>
+            <div class="logo"><a href="{% url 'home' %}">Furniture</a></div>
             <nav class="main_nav">
               <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
                 <li class="hassubs">
                   <a href="{% url 'categories' %}">Categories</a>
                   <ul>
-                    <li><a href="{% url 'categories' %}">Categories</a></li>
+                    <li><a href="{% url 'categories' %}">Beds</a></li>
+                    <li><a href="{% url 'categories' %}">Mattresses</a></li>
+                    <li><a href="{% url 'categories' %}">Chairs</a></li>
+                    <li><a href="{% url 'categories' %}">Tables</a></li>
+                    <li><a href="{% url 'categories' %}">Sofas</a></li>
+                    <li><a href="{% url 'categories' %}">Lamps</a></li>
+                    <li><a href="{% url 'categories' %}">Closets</a></li>
+                    <li><a href="{% url 'categories' %}">Almirah</a></li>
                     <li><a href="{% url 'product' %}">Product</a></li>
-                    <li><a href="{% url 'cart' %}">Cart</a></li>
-                    <li><a href="{% url 'checkout' %}">Check out</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Accessories</a></li>
-                <li class="hassubs">
-                  <a href="#">Account</a>
-                  <ul>
-                    <li><a href="{% url 'orders' %}">Your Orders</a></li>
-                    <li><a href="{% url 'wishlist' %}">Your Wish List</a></li>
-                    <li><a href="{% url 'profile' %}">Your Settings</a></li>
-                    <li><a href="{% url 'returns' %}">Your Returns</a></li>
-                    <li><a href="{% url 'address' %}">Saved Addresses</a></li>
-                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
-                    <li><a href="{% url 'register' %}">Logout</a></li>
-                  </ul>
-                </li>
+                <li><a href="{% url 'categories' %}">Sale</a></li>
+                <li><a href="{% url 'categories' %}">New</a></li>
+                <li><a href="{% url 'categories' %}">Bedroom</a></li>
+                <li><a href="{% url 'categories' %}">Dining</a></li>
+                <li><a href="{% url 'categories' %}">Decor</a></li>
               </ul>
             </nav>
-            <div class="header_extra ml-auto">
+            <div class="header_extra ml-auto" style="padding-right:50px">
               <div class="shopping_cart">
                 <a href="{% url 'cart' %}">
                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -68,7 +64,7 @@
                   <div>Cart <span>(0)</span></div>
                 </a>
               </div>
-              <div class="search">
+              <!-- <div class="search">
                 <div class="search_icon">
                   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                   viewBox="0 0 475.084 475.084" style="enable-background:new 0 0 475.084 475.084;"
@@ -88,9 +84,30 @@
                   </g>
                 </svg>
                 </div>
-              </div>
+              </div> -->
               <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
             </div>
+
+            <li class="hassubs1" style="padding-right:20px">
+              {% if profile_picture == '' %}
+                <a href="#"><img src="/static/profile/pics/empty.png" alt="" style="width:40px;height:40px;border-radius:20px;"></a>
+              {% else %}
+                <a href="#"><img src="/media/{{profile_picture}}" alt="" style="width:40px;height:40px;border-radius:20px;"></a>
+              {% endif %}
+              <ul>
+                <li><a href="{% url 'checkout' %}">Check Out</a></li>
+                <li><a href="{% url 'orders' %}">Your Orders</a></li>
+                <li><a href="#">Track Order</a></li>
+                <li><a href="{% url 'wishlist' %}">Your Wish List</a></li>
+                <li><a href="{% url 'profile' %}">Your Settings</a></li>
+                <li><a href="{% url 'returns' %}">Your Returns</a></li>
+                <li><a href="{% url 'address' %}">Saved Addresses</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="{% url 'register' %}">Logout</a></li>
+              </ul>
+            </li>
+
           </div>
         </div>
       </div>
@@ -98,7 +115,7 @@
   </div>
 
   <!-- Search Panel -->
-  <div class="search_panel trans_300">
+  <!-- <div class="search_panel trans_300">
     <div class="container">
       <div class="row">
         <div class="col">
@@ -110,7 +127,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Social -->
   <div class="header_social">
