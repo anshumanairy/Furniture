@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import login,authenticate,logout,get_user_model
 from django.contrib.auth.models import User
@@ -20,10 +20,19 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
-from furn.models.register_model import user_detail
+from furn.models.product_model import product_upload
 
 @login_required(login_url='/')
 def prod(request):
-    details = user_detail.objects.get(user_id = request.user.id)
-    profile_picture = details.profile_picture
-    return render(request,'product.html/',{'profile_picture':profile_picture})
+    return render(request,'product.html/',{})
+
+def prod_detail(request,procode):
+    obj = get_object_or_404(product_upload,product_code=procode)
+    img = obj.get_images
+    context = {
+        'product' : obj,
+        'images' : img,
+    }
+    print("##debug")
+    print(obj,img)
+    return render(request,'product.html/',context)
