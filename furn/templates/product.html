@@ -40,7 +40,7 @@
 				<!-- Product Image -->
 				<div class="col-lg-6">
 					<div class="details_image">
-						<div class="details_image_large"><img src="/static/images/details_1.jpg" alt=""><div class="product_extra product_new"><a href="{% url 'categories' %}">New</a></div></div>
+						<div class="details_image_large"><img src="/media/{{image.img}}" alt=""><div class="product_extra product_new"><a href="{% url 'categories' %}">New</a></div></div>
 						<div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
 							<div class="details_image_thumbnail active" data-image="images/details_1.jpg"><img src="/static/images/details_1.jpg" alt=""></div>
 							<div class="details_image_thumbnail" data-image="images/details_2.jpg"><img src="/static/images/details_2.jpg" alt=""></div>
@@ -53,17 +53,23 @@
 				<!-- Product Content -->
 				<div class="col-lg-6">
 					<div class="details_content">
-						<div class="details_name">Smart Phone</div>
-						<div class="details_discount">$890</div>
-						<div class="details_price">$670</div>
+						<div class="details_name">{{product.title}}</div>
+						<div class="details_discount">INR {{product.crossed_price}}</div>
+						<div class="details_price">INR {{product.selling_price}}</div>
 
 						<!-- In Stock -->
 						<div class="in_stock_container">
-							<div class="availability">Availability:</div>
-							<span>In Stock</span>
+							<div class="availability">Availability: </div>
+							<span>{{product.quantity}} (In Stock)</span>
 						</div>
+
+						<div class="in_stock_container">
+							<div class="availability">Dimensions: </div>
+							<span>{{product.length}} X {{product.breadth}} X {{product.height}}</span>
+						</div>
+
 						<div class="details_text">
-							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>
+							<p>{{product.description}}</p>
 						</div>
 
 						<!-- Product Quantity -->
@@ -100,7 +106,7 @@
 						<div class="reviews_title"><a href="#">Reviews <span>(1)</span></a></div>
 					</div>
 					<div class="description_text">
-						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>
+						<p>{{product.description}}</p>
 					</div>
 				</div>
 			</div>

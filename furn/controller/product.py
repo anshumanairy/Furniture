@@ -21,22 +21,29 @@ from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
 from furn.models.product_model import product_upload
+from furn.models.image_model import ImageManager, Image
 from furn.controller import display_picture
 
 @login_required(login_url='/')
 def prod(request):
     profile_picture = display_picture.check_admin(request)
-    return render(request,'product.html/',{'profile_picture':profile_picture})
+    product = product_upload.objects.get(product_code=1)
+    image = Image.objects.get(object_id=1)
+    return render(request,'product.html/',{'profile_picture':profile_picture,'product':product,'image':image})
 
 def prod_detail(request,procode):
     profile_picture = display_picture.check_admin(request)
-    obj = get_object_or_404(product_upload,product_code=procode)
-    img = obj.get_images
+    obj = get_object_or_404(product_upload,product_code=1)
+    img = obj.get_image
+
+    product = product_upload.objects.get(product_code=1)
+    image = Image.objects.get(object_id=1)
+
     context = {
-        'product' : obj,
-        'images' : img,
-        'profile_picture' : profile_picture
+        'profile_picture' : profile_picture,
+        'product':product,
+        'image':image
     }
     print("##debug")
-    print(obj,img)
+    print(product)
     return render(request,'product.html/',context)
