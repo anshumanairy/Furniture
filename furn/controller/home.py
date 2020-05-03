@@ -20,7 +20,10 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
+from furn.models.register_model import user_detail
 
 @login_required(login_url='/')
-def base(request):
-    return render(request,'home.html',{})
+def home(request):
+    details = user_detail.objects.get(user_id = request.user.id)
+    profile_picture = details.profile_picture
+    return render(request,'home.html',{'profile_picture':profile_picture})
