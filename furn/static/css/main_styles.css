@@ -1629,3 +1629,64 @@ section
 {
 	color: #1b1b1b;
 }
+
+.main_nav ul li.hassubs2::after
+{
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	left: calc(100% + 3px);
+	font-family: 'FontAwesome';
+	font-size: 10px;
+	content: '\f078';
+	color: #767676;
+}
+.hassubs2 ul
+{
+	position: absolute;
+	right:-10px;
+	width: 130px;
+	top: calc(100% + 20px);
+	text-align: right;
+	background: #FFFFFF;
+	padding-right: 25px;
+	padding-left: 25px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.hassubs2:hover ul
+{
+	visibility: visible;
+	opacity: 1;
+	top: calc(100%);
+}
+.hassubs2 ul li:not(:last-child)
+{
+	margin-bottom: 11px;
+}
+.hassubs2 ul li a
+{
+	font-size: 14px;
+	font-weight: 600;
+	color: #767676;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.hassubs2 ul li a:hover
+{
+	color: #1b1b1b;
+}

@@ -883,7 +883,7 @@ section
 *********************************/
 
 .checkout
-{
+{	
 	width: 100%;
 	padding-top: 98px;
 	padding-bottom: 99px;
@@ -1114,7 +1114,11 @@ section
 	width: 100%;
 	margin-top: 83px;
 }
-
+.order_button1
+{
+	width: 100%;
+	margin-top: 30px;
+}
 /*********************************
 7. Footer
 *********************************/

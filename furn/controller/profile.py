@@ -21,14 +21,22 @@ from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
 from furn.models.register_model import user_detail
+from furn.controller import display_picture
 
 @login_required(login_url='/')
 def profile(request):
-    details = user_detail.objects.get(user_id = request.user.id)
+    profile_picture = display_picture.check_admin(request)
+    check = User.objects.get(id = request.user.id)
     username = request.user.username
-    name = details.name
-    gender = details.gender
-    mobile = details.phone
-    email = details.email
-    profile_picture = details.profile_picture
+    name = 'Admin'
+    gender = 'm'
+    mobile = ''
+    email = ''
+    if check.is_superuser == False:
+        details = user_detail.objects.get(user_id = request.user.id)
+        username = request.user.username
+        name = details.name
+        gender = details.gender
+        mobile = details.phone
+        email = details.email
     return render(request,'profile.html/',{'username':username, 'name':name, 'gender':gender, 'mobile':mobile, 'email':email, 'profile_picture':profile_picture})

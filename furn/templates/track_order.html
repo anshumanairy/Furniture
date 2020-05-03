@@ -1,0 +1,49 @@
+{% include 'base.html' %}
+{% include 'navbar.html' %}
+
+{% block base %}
+
+<link href="/static/profile/css/sb-admin-2.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/static/css/checkout.css">
+<link rel="stylesheet" type="text/css" href="/static/css/main_styles.css">
+<link rel="stylesheet" type="text/css" href="/static/css/responsive.css">
+
+
+<body>
+
+  	{% block navbar %}
+    {% endblock %}
+
+    <!-- Checkout -->
+
+  	<div class="checkout">
+  		<div class="container">
+  			<div class="row">
+
+  				<!-- Billing Info -->
+  				<div class="col-lg-6">
+  					<div class="billing checkout_section">
+  						<div class="section_title">Track Package</div>
+  						<div class="checkout_form_container">
+
+  							<form action="#" id="track_order" class="checkout_form">
+  								<div>
+  									<input type="text" id="track_submit" class="checkout_input" required="required" placeholder="Tracking ID">
+  								</div>
+                  <input type="submit" class="button1 button_light1" style="color:black" name="" value="TRACK">
+  							</form>
+
+  						</div>
+  					</div>
+  				</div>
+
+        </div>
+      </div>
+    </div>
+
+</body>
+
+<script src="/static/js/custom.js"></script>
+<script src="/static/profile/js/sb-admin-2.min.js"></script>
+
+{% endblock %}
