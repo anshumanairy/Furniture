@@ -26,24 +26,34 @@ from furn.controller import display_picture
 
 @login_required(login_url='/')
 def prod(request):
+    # procode set to 1, which is according to the product in my db, change accordingly when testing
     profile_picture = display_picture.check_admin(request)
     product = product_upload.objects.get(product_code=1)
-    image = Image.objects.get(object_id=1)
-    return render(request,'product.html/',{'profile_picture':profile_picture,'product':product,'image':image})
+    image = Image.objects.filter(object_id=1)
+    images = []
+    main_image=image[0].img
+    for i in image:
+        images.append(i.img)
+    return render(request,'product.html/',{'profile_picture':profile_picture,'product':product,'images':images,'main_image':main_image})
 
 def prod_detail(request,procode):
     profile_picture = display_picture.check_admin(request)
-    obj = get_object_or_404(product_upload,product_code=1)
+    obj = get_object_or_404(product_upload,product_code=procode)
     img = obj.get_image
 
-    product = product_upload.objects.get(product_code=1)
-    image = Image.objects.get(object_id=1)
+    product = product_upload.objects.get(product_code=procode)
+    image = Image.objects.filter(object_id=procode)
+    images = []
+    main_image=image[0].img
+    for i in image:
+        images.append(i.img)
 
     context = {
         'profile_picture' : profile_picture,
         'product':product,
-        'image':image
+        'images':images,
+        'main_image':main_image
     }
-    print("##debug")
-    print(product)
+    # print("##debug")
+    # print(product)
     return render(request,'product.html/',context)

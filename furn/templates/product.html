@@ -40,12 +40,11 @@
 				<!-- Product Image -->
 				<div class="col-lg-6">
 					<div class="details_image">
-						<div class="details_image_large"><img src="/media/{{image.img}}" alt=""><div class="product_extra product_new"><a href="{% url 'categories' %}">New</a></div></div>
-						<div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
-							<div class="details_image_thumbnail active" data-image="images/details_1.jpg"><img src="/static/images/details_1.jpg" alt=""></div>
-							<div class="details_image_thumbnail" data-image="images/details_2.jpg"><img src="/static/images/details_2.jpg" alt=""></div>
-							<div class="details_image_thumbnail" data-image="images/details_3.jpg"><img src="/static/images/details_3.jpg" alt=""></div>
-							<div class="details_image_thumbnail" data-image="images/details_4.jpg"><img src="/static/images/details_4.jpg" alt=""></div>
+						<div class="details_image_large"><img src="/media/{{ main_image }}" alt=""><div class="product_extra product_new"><a href="{% url 'categories' %}">New</a></div></div>
+						<div class="details_image_thumbnails d-flex flex-row align-items-start">
+							{% for img in images %}
+								<div class="details_image_thumbnail" data-image="/media/{{ img }}"><img src="/media/{{ img }}" alt=""></div>
+              {% endfor %}
 						</div>
 					</div>
 				</div>
