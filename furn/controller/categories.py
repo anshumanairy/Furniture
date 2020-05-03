@@ -21,8 +21,24 @@ from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
 from furn.controller import display_picture
+from furn.models.product_model import product_upload
+from furn.models.image_model import ImageManager, Image
 
 @login_required(login_url='/')
 def category(request):
     profile_picture = display_picture.check_admin(request)
-    return render(request,'categories.html/',{'profile_picture':profile_picture})
+    obj = product_upload.objects.all()
+    products = []
+    images = []
+    for product in obj:
+        products.append(product)
+        img = product.get_images
+        images.append(img[0])
+
+    context = {
+        'profile_picture' : profile_picture,
+        'products':products,
+        'images':images,
+    }
+
+    return render(request,'categories.html/',context)

@@ -36,3 +36,6 @@ class product_upload(models.Model):
     def get_images(self):
         images = Image.objects.get_by_instance(self)
         return images
+
+    def get_absolute_url(self):
+        return f"/product/{self.product_code}"

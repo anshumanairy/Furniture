@@ -23,7 +23,6 @@ urlpatterns = [
     url(r'^checkout',checkout.purchase,name="checkout"),
     url(r'^contact',contact.contact,name="contact"),
     url(r'^home',home.home,name="home"),
-    url(r'^product/$',product.prod,name="product"),
     url(r'^product/(?P<procode>[-a-zA-Z0-9_]+)',product.prod_detail,name="product_detail"),
     url(r'^profile',profile.profile,name="profile"),
     url(r'^admin',admin.admin,name="admin"),

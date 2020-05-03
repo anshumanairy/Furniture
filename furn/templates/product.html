@@ -43,7 +43,7 @@
 						<div class="details_image_large"><img src="{{ main_image.img.url }}" alt="" style="width:488px;height:500px"><div class="product_extra product_new"><a href="{% url 'categories' %}">New</a></div></div>
 						<div class="details_image_thumbnails d-flex flex-row align-items-start">
 							{% for img in images %}
-								<div class="details_image_thumbnail" ><img src="{{ img.img.url }}" alt="" style="width:126px;height:137.3px"></div>
+								<div class="details_image_thumbnail" data-image="{{ img.img.url }}"><img src="{{ img.img.url }}" alt="" style="width:126px;height:137.3px"></div>
               {% endfor %}
 						</div>
 					</div>
@@ -131,7 +131,7 @@
 							<div class="product_image"><img src="/static/images/product_1.jpg" alt=""></div>
 							<div class="product_extra product_new"><a href="{% url 'categories' %}">New</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="{% url 'product' %}">Smart Phone</a></div>
+								<div class="product_title"><a href="#">Smart Phone</a></div>
 								<div class="product_price">$670</div>
 							</div>
 						</div>
@@ -141,7 +141,7 @@
 							<div class="product_image"><img src="/static/images/product_2.jpg" alt=""></div>
 							<div class="product_extra product_sale"><a href="{% url 'categories' %}">Sale</a></div>
 							<div class="product_content">
-								<div class="product_title"><a href="{% url 'product' %}">Smart Phone</a></div>
+								<div class="product_title"><a href="#">Smart Phone</a></div>
 								<div class="product_price">$520</div>
 							</div>
 						</div>
@@ -150,7 +150,7 @@
 						<div class="product">
 							<div class="product_image"><img src="/static/images/product_3.jpg" alt=""></div>
 							<div class="product_content">
-								<div class="product_title"><a href="{% url 'product' %}">Smart Phone</a></div>
+								<div class="product_title"><a href="#">Smart Phone</a></div>
 								<div class="product_price">$710</div>
 							</div>
 						</div>
@@ -159,7 +159,7 @@
 						<div class="product">
 							<div class="product_image"><img src="/static/images/product_4.jpg" alt=""></div>
 							<div class="product_content">
-								<div class="product_title"><a href="{% url 'product' %}">Smart Phone</a></div>
+								<div class="product_title"><a href="#">Smart Phone</a></div>
 								<div class="product_price">$330</div>
 							</div>
 						</div>
