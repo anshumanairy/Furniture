@@ -39,21 +39,23 @@ def prod(request):
 def prod_detail(request,procode):
     profile_picture = display_picture.check_admin(request)
     obj = get_object_or_404(product_upload,product_code=procode)
-    img = obj.get_image
+    img = obj.get_images
 
-    product = product_upload.objects.get(product_code=procode)
-    image = Image.objects.filter(object_id=procode)
-    images = []
-    main_image=image[0].img
-    for i in image:
-        images.append(i.img)
+    # product = product_upload.objects.get(product_code=procode)
+    # image = Image.objects.filter(object_id=procode)
+    # images = []
+    # main_image=image[0].img
+    # for i in image:
+    #     images.append(i.img)
 
     context = {
         'profile_picture' : profile_picture,
-        'product':product,
-        'images':images,
-        'main_image':main_image
+        # 'product':product,
+        'product':obj,
+        # 'images':images,
+        'images':img,
+        'main_image':img[0],
     }
     # print("##debug")
-    # print(product)
+    print(obj,img)
     return render(request,'product.html/',context)
