@@ -40,10 +40,10 @@
 				<!-- Product Image -->
 				<div class="col-lg-6">
 					<div class="details_image">
-						<div class="details_image_large"><img src="{{ main_image.img.url }}" alt=""><div class="product_extra product_new"><a href="{% url 'categories' %}">New</a></div></div>
+						<div class="details_image_large"><img src="{{ main_image.img.url }}" alt="" style="width:488px;height:500px"><div class="product_extra product_new"><a href="{% url 'categories' %}">New</a></div></div>
 						<div class="details_image_thumbnails d-flex flex-row align-items-start">
 							{% for img in images %}
-								<div class="details_image_thumbnail" ><img src="{{ img.img.url }}" alt=""></div>
+								<div class="details_image_thumbnail" ><img src="{{ img.img.url }}" alt="" style="width:126px;height:137.3px"></div>
               {% endfor %}
 						</div>
 					</div>
