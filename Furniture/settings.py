@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'furniture_db',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Navneet.1310',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
