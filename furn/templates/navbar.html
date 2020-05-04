@@ -65,10 +65,13 @@
                     <div>Cart <span>(0)</span></div>
                   </a>
                   <ul>
-                    <li><a href="#">Product 1</a></li>
-                    <li><a href="#">Product 2</a></li>
-                    <li><a href="#">Product 3</a></li>
-                    <li><a href="#">Product 4</a></li>
+                    {% if cart_products == '' %}
+                      <li><a href="#">Product 1</a></li>
+                    {% else %}
+                      {% for product in cart_products %}
+                        <li><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></li>
+                      {% endfor %}
+                    {% endif %}
                     <!-- The Submit button will redirect to the checkout page from its controller and not from fe -->
                     <li style="padding-top:10px"><input type="submit" class="button1 button_light1" style="color:black; height:30px; width:93px; font-weight:120; font-size:10px" name="" value="Checkout"></li>
                   </ul>

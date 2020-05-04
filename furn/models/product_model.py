@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from .image_model import Image
+# from django.contrib.postgres.fields import ArrayField
 
 types = (
     ('a','Almirah'),
@@ -13,6 +14,21 @@ types = (
     ('t','Table'),
 )
 
+# colors = (
+#     ('bl','Black'),
+#     ('bl','Blue'),
+#     ('br','Brown'),
+#     ('gr','Green'),
+#     ('or','Orange'),
+#     ('pi','Pink'),
+#     ('re','Red'),
+#     ('tr','Transparent'),
+#     ('vi','Violet'),
+#     ('wh','White'),
+#     ('ye','Yellow'),
+#     ('ot','Other'),
+# )
+
 # def images_directory_path(self, filename):
 #     return 'Furniture_{0}/{1}/{2}'.format('Images',self.id, filename)
 
@@ -24,6 +40,9 @@ class product_upload(models.Model):
     crossed_price = models.IntegerField(default=0)
     selling_price = models.IntegerField(default=0)
     furniture_type = models.CharField(max_length=8, choices=types)
+    # colors_available = ArrayField(
+    #     models.CharField(choices=colors, max_length=10, blank=True)
+    # )
 
     # dimensions in inch
     length = models.IntegerField(default=0)

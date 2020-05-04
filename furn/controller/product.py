@@ -20,22 +20,49 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
+# Model Imports
 from furn.models.product_model import product_upload
 from furn.models.image_model import ImageManager, Image
+from furn.models.cart_model import cart
+from furn.models.register_model import user_detail
+# Controller View Imports
 from furn.controller import display_picture
 
 @login_required(login_url='/')
 def prod_detail(request,procode):
+
+    # Profile Picture for Navbar
     profile_picture = display_picture.check_admin(request)
+
+    # Product Details
     obj = get_object_or_404(product_upload,product_code=procode)
     img = obj.get_images
+
+    cart_products=[]
+    cart_images=[]
+    if(cart.objects.filter(user_id=request.user.id).exists()):
+        cart_obj = cart.objects.filter(user_id=request.user.id)
+        for ob in cart_obj:
+            prod = product_upload.objects.get(id=ob.product_id)
+            cart_products.append(prod)
+            cart_images.append((prod.get_images)[0])
+    else:
+        cart_products=''
+
+    # Add to Cart
+    if request.method=='GET':
+        if 'add_to_cart' in request.GET:
+            product_cart = cart(user_id=request.user.id,product_id=obj.id)
+            product_cart.save()
+            return render(request,'product.html/',context)
 
     context = {
         'profile_picture' : profile_picture,
         'product':obj,
         'images':img,
         'main_image':img[0],
+        'cart_products':cart_products,
+        'cart_images':cart_images
     }
-    # print("##debug")
-    # print(obj,img)
+
     return render(request,'product.html/',context)
