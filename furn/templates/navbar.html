@@ -64,11 +64,22 @@
                     </svg>
                     <div>Cart <span>(0)</span></div>
                   </a>
-                  <ul>
-                    <li><a href="#">Product 1</a></li>
-                    <li><a href="#">Product 2</a></li>
-                    <li><a href="#">Product 3</a></li>
-                    <li><a href="#">Product 4</a></li>
+                  <ul style="width:300px;">
+                    {% if cart_products == '' %}
+                      <li><a href="#">Product 1</a></li>
+                    {% else %}
+                      {% for product in cart_products %}
+                        {% for image in cart_images %}
+          								{% if forloop.counter == forloop.parentloop.counter %}
+                            <li>
+                              <a href="{{ product.get_absolute_url }}"><span style="display:block;float:left"><img src="{{ image.img.url }}" style="height:60px;width:55px"></span></a>
+                              <a href="{{ product.get_absolute_url }}"><span style="display:block; font-size:12px;width:180px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;float:right">{{ product.title }}</span></a>
+                              <p style="color:lightgrey">--------------------------------</p>
+                            </li>
+                          {% endif %}
+          							{% endfor %}
+                      {% endfor %}
+                    {% endif %}
                     <!-- The Submit button will redirect to the checkout page from its controller and not from fe -->
                     <li style="padding-top:10px"><input type="submit" class="button1 button_light1" style="color:black; height:30px; width:93px; font-weight:120; font-size:10px" name="" value="Checkout"></li>
                   </ul>

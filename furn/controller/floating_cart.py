@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import login,authenticate,logout,get_user_model
 from django.contrib.auth.models import User
@@ -20,33 +20,32 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
-from furn.controller import display_picture
+# Model Imports
 from furn.models.product_model import product_upload
 from furn.models.image_model import ImageManager, Image
-from furn.controller import floating_cart
+from furn.models.cart_model import cart
+from furn.models.register_model import user_detail
 
 @login_required(login_url='/')
-def category(request):
-    profile_picture = display_picture.check_admin(request)
-    # Floating Cart Content
-    cart_products = floating_cart.cart_product(request)
-    cart_images = floating_cart.cart_image(request)
+def cart_product(request):
+    cart_products=[]
+    if(cart.objects.filter(user_id=request.user.id).exists()):
+        cart_obj = cart.objects.filter(user_id=request.user.id)
+        for ob in cart_obj:
+            prod = product_upload.objects.get(id=ob.product_id)
+            cart_products.append(prod)
+    else:
+        cart_products=''
 
-    obj = product_upload.objects.all()
-    products = []
-    images = []
-    for product in obj:
-        products.append(product)
-        img = product.get_images
-        images.append(img[0])
+    return cart_products
 
+@login_required(login_url='/')
+def cart_image(request):
+    cart_images=[]
+    if(cart.objects.filter(user_id=request.user.id).exists()):
+        cart_obj = cart.objects.filter(user_id=request.user.id)
+        for ob in cart_obj:
+            prod = product_upload.objects.get(id=ob.product_id)
+            cart_images.append((prod.get_images)[0])
 
-    context = {
-        'profile_picture' : profile_picture,
-        'products':products,
-        'images':images,
-        'cart_products':cart_products,
-        'cart_images':cart_images
-    }
-
-    return render(request,'categories.html/',context)
+    return cart_images
