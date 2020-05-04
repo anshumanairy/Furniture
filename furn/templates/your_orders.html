@@ -3,11 +3,9 @@
 
 {% block base %}
 
-<link href="/static/profile/css/sb-admin-2.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/static/profile/css/profile.css">
-<link rel="stylesheet" href="/static/profile/css/style.css"/>
 <link rel="stylesheet" type="text/css" href="/static/css/main_styles.css">
 <link rel="stylesheet" type="text/css" href="/static/css/responsive.css">
+<link rel="stylesheet" type="text/css" href="/static/css/your_orders.css">
 
 
 <body>
@@ -15,6 +13,47 @@
   	{% block navbar %}
     {% endblock %}
 
+    <!-- Home -->
+
+    <div class="home">
+      <div class="home_container">
+        <div class="home_background" style="background-image:url(/static/images/cart.jpg)"></div>
+        <div class="home_content_container">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="home_content">
+                  <div class="breadcrumbs">
+                    <ul>
+                      <li><a href="{% url 'home' %}">Home</a></li>
+                      <li><a href="{% url 'cart' %}">Shopping Cart</a></li>
+                      <li>Your Orders</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- address block -->
+    <
+    <div class="address" style="background-color:lightgrey;">
+      <ul>
+        <li><label style="font-size:20px;color:black;">Orders</label></li>
+
+        <!--  {% for pd in product %} -->
+
+          <a href="#">image</a>
+          <ul>
+            <li style="font-size:12px;">Product: {{pd.name}}</li>
+            <li><p style="font-size:9px;">Seller: {{pd.seller}}</p></li>
+          </ul>
+        <!--  {% endfor %} -->
+      </ul>
+    </div>
 
 </body>
 
