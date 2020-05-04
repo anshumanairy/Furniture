@@ -27,6 +27,7 @@ from furn.models.cart_model import cart
 from furn.models.register_model import user_detail
 # Controller View Imports
 from furn.controller import display_picture
+from furn.controller import floating_cart
 
 @login_required(login_url='/')
 def prod_detail(request,procode):
@@ -38,23 +39,17 @@ def prod_detail(request,procode):
     obj = get_object_or_404(product_upload,product_code=procode)
     img = obj.get_images
 
-    cart_products=[]
-    cart_images=[]
-    if(cart.objects.filter(user_id=request.user.id).exists()):
-        cart_obj = cart.objects.filter(user_id=request.user.id)
-        for ob in cart_obj:
-            prod = product_upload.objects.get(id=ob.product_id)
-            cart_products.append(prod)
-            cart_images.append((prod.get_images)[0])
-    else:
-        cart_products=''
+    # Floating Cart Content
+    cart_products = floating_cart.cart_product(request)
+    cart_images = floating_cart.cart_image(request)
 
     # Add to Cart
     if request.method=='GET':
         if 'add_to_cart' in request.GET:
             product_cart = cart(user_id=request.user.id,product_id=obj.id)
             product_cart.save()
-            return render(request,'product.html/',context)
+            return redirect(obj)
+
 
     context = {
         'profile_picture' : profile_picture,
