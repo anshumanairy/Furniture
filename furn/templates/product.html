@@ -79,7 +79,11 @@
 									<span>Qty</span>
 									<input id="quantity_input" type="number" min="1" value="1" max="{{product.quantity}}" name="quantity_to_add">
 								</div>
-								<input type="submit" class="button1 button_light1" style="color:black" name="add_to_cart" value="Add to Cart">
+								{% if already_added %}
+									<a href="{% url 'cart-page' %}"><input type="button" class="button1 button_light1" style="color:blue" name="already_added" value="Already Added Go to Cart"></a>
+								{% else %}
+									<input type="submit" class="button1 button_light1" style="color:black" name="add_to_cart" value="Add to Cart">
+								{% endif %}
 							</div>
 						</form>
 

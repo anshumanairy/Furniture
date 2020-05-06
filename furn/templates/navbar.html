@@ -58,14 +58,14 @@
                           c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
                       </g>
                     </svg>
-                    <div>Cart <span>{{ user.name }}</span></div>
+                    <div>Cart(<span>{{ user.user_detail.count_cart }}</span>)</div>
                   </a>
                   <ul style="width:300px;">
-                    {% if object is None %}
+                    {% if user.user_detail.cart_items is None %}
                       <!-- Empty Cart -->
                       <li><a href="#">Empty</a></li>
                     {% else %}
-                      {% for cart_item in object %}
+                      {% for cart_item in user.user_detail.cart_items %}
                             <!-- Filled Cart -->
                             <li>
                               <a href="{{ cart_item.product.get_absolute_url }}"><span style="display:block;float:left"><img src="{{ cart_item.product.get_main_image.img.url }}" style="height:60px;width:55px"></span></a>

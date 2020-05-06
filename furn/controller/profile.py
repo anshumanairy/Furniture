@@ -22,14 +22,10 @@ from django.utils.timezone import utc
 from django.utils import timezone
 from furn.models.register_model import user_detail
 from furn.controller import display_picture
-from furn.controller import floating_cart
 
 @login_required(login_url='/')
 def profile(request):
     profile_picture = display_picture.check_admin(request)
-    # Floating Cart Content
-    cart_products = floating_cart.cart_product(request)
-    cart_images = floating_cart.cart_image(request)
 
     check = User.objects.get(id = request.user.id)
     username = request.user.username
@@ -47,8 +43,6 @@ def profile(request):
 
     context = {
         'profile_picture' : profile_picture,
-        'cart_products':cart_products,
-        'cart_images':cart_images,
         'username':username,
         'name':name,
         'gender':gender,

@@ -9,11 +9,11 @@ gender = (
 )
 
 class user_detail(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
     name = models.CharField(max_length=20)
     gender = models.CharField(max_length=6, choices=gender, default="Male")
     phone = models.CharField(max_length=10)
-    email = models.EmailField(max_length=20)
+    email = models.EmailField()
     profile_picture = models.ImageField(upload_to='Profile', blank=True)
 
     def __str__(self):
