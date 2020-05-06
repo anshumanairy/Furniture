@@ -40,11 +40,7 @@
                     <li><a href="{% url 'categories' %}">Almirah</a></li>
                   </ul>
                 </li>
-                <li><a href="{% url 'categories' %}">Sale</a></li>
-                <li><a href="{% url 'categories' %}">New</a></li>
-                <li><a href="{% url 'categories' %}">Bedroom</a></li>
-                <li><a href="{% url 'categories' %}">Dining</a></li>
-                <li><a href="{% url 'categories' %}">Decor</a></li>
+                <!-- Search Bar -->
               </ul>
             </nav>
 
@@ -66,11 +62,13 @@
                   </a>
                   <ul style="width:300px;">
                     {% if cart_products == '' %}
+                      <!-- Empty Cart -->
                       <li><a href="#">Product 1</a></li>
                     {% else %}
                       {% for product in cart_products %}
                         {% for image in cart_images %}
           								{% if forloop.counter == forloop.parentloop.counter %}
+                            <!-- Filled Cart -->
                             <li>
                               <a href="{{ product.get_absolute_url }}"><span style="display:block;float:left"><img src="{{ image.img.url }}" style="height:60px;width:55px"></span></a>
                               <a href="{{ product.get_absolute_url }}"><span style="display:block; font-size:12px;width:180px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;float:right">{{ product.title }}</span></a>
