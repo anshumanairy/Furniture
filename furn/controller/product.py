@@ -46,7 +46,7 @@ def prod_detail(request,procode):
     # Add to Cart
     if request.method=='GET':
         if 'add_to_cart' in request.GET:
-            product_cart = cart(user_id=request.user.id,product_id=obj.id)
+            product_cart = cart(user_id=request.user.id,product_id=obj.id,quantity=request.GET.get('quantity_to_add'))
             product_cart.save()
             return redirect(obj)
 
