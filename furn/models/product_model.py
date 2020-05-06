@@ -58,3 +58,6 @@ class product_upload(models.Model):
 
     def get_absolute_url(self):
         return f"/product/{self.product_code}"
+
+    def get_main_image(self):
+        return self.get_images[0]

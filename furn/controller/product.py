@@ -24,6 +24,7 @@ from django.utils import timezone
 from furn.models.product_model import product_upload
 from furn.models.image_model import ImageManager, Image
 from furn.models.cart_model import cart
+from furn.models.cart_model import Cart_items
 from furn.models.register_model import user_detail
 # Controller View Imports
 from furn.controller import display_picture
@@ -48,6 +49,8 @@ def prod_detail(request,procode):
         if 'add_to_cart' in request.GET:
             product_cart = cart(user_id=request.user.id,product_id=obj.id,quantity=request.GET.get('quantity_to_add'))
             product_cart.save()
+            cart_item = Cart_items(user=request.user,product=obj,quantity=request.GET.get('quantity_to_add'))
+            cart_item.save()
             return redirect(obj)
 
 

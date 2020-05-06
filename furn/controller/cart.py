@@ -20,6 +20,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
+from furn.models.cart_model import Cart_items
 from furn.controller import display_picture
 from furn.controller import floating_cart
 
@@ -34,5 +35,16 @@ def bag(request):
         'profile_picture' : profile_picture,
         'cart_products':cart_products,
         'cart_images':cart_images
+    }
+    return render(request,'cart.html/',context)
+
+@login_required(login_url='/')
+def cart(request):
+    profile_picture = display_picture.check_admin(request)
+    obj = Cart_items.objects.filter(user=request.user)
+    # print(obj)
+    context = {
+        'profile_picture' : profile_picture,
+        'object' : obj,
     }
     return render(request,'cart.html/',context)

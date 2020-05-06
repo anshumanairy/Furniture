@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .cart_model import Cart_items
 
 gender = (
     ('m','Male'),
@@ -17,3 +18,13 @@ class user_detail(models.Model):
 
     def __str__(self):
         return self.user.email
+
+    def cart_items(self):
+        items = Cart_items.objects.filter(user=self.user)
+        print(items)
+        return items
+
+    def count_cart(self):
+        val = len(self.cart_items())
+        print(val)
+        return val
