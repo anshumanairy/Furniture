@@ -51,7 +51,7 @@
             <ul class="header_extra ml-auto" style="padding-right:25px">
               <li class="hassubs2" style="padding-right:20px">
                 <div class="shopping_cart">
-                  <a href="{% url 'cart' %}">
+                  <a href="{% url 'cart-page' %}">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
                       <g>
@@ -62,24 +62,20 @@
                           c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
                       </g>
                     </svg>
-                    <div>Cart <span>(0)</span></div>
+                    <div>Cart(<span>{{ user.user_detail.count_cart }}</span>)</div>
                   </a>
                   <ul style="width:300px;">
-                    {% if cart_products == '' %}
+                    {% if user.user_detail.cart_items is None %}
                       <!-- Empty Cart -->
-                      <li><a href="#">Product 1</a></li>
+                      <li><a href="#">Empty</a></li>
                     {% else %}
-                      {% for product in cart_products %}
-                        {% for image in cart_images %}
-          								{% if forloop.counter == forloop.parentloop.counter %}
+                      {% for cart_item in user.user_detail.cart_items %}
                             <!-- Filled Cart -->
                             <li>
-                              <a href="{{ product.get_absolute_url }}"><span style="display:block;float:left"><img src="{{ image.img.url }}" style="height:60px;width:55px"></span></a>
-                              <a href="{{ product.get_absolute_url }}"><span style="display:block; font-size:12px;width:180px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;float:right">{{ product.title }}</span></a>
+                              <a href="{{ cart_item.product.get_absolute_url }}"><span style="display:block;float:left"><img src="{{ cart_item.product.get_main_image.img.url }}" style="height:60px;width:55px"></span></a>
+                              <a href="{{ cart_item.product.get_absolute_url }}"><span style="display:block; font-size:12px;width:180px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;float:right">{{ cart_item.product.title }}</span></a>
                               <p style="color:lightgrey">--------------------------------</p>
                             </li>
-                          {% endif %}
-          							{% endfor %}
                       {% endfor %}
                     {% endif %}
                     <!-- The Submit button will redirect to the checkout page from its controller and not from fe -->

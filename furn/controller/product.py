@@ -23,11 +23,10 @@ from django.utils import timezone
 # Model Imports
 from furn.models.product_model import product_upload
 from furn.models.image_model import ImageManager, Image
-from furn.models.cart_model import cart
+from furn.models.cart_model import Cart_items
 from furn.models.register_model import user_detail
 # Controller View Imports
 from furn.controller import display_picture
-from furn.controller import floating_cart
 
 @login_required(login_url='/')
 def prod_detail(request,procode):
@@ -39,15 +38,17 @@ def prod_detail(request,procode):
     obj = get_object_or_404(product_upload,product_code=procode)
     img = obj.get_images
 
-    # Floating Cart Content
-    cart_products = floating_cart.cart_product(request)
-    cart_images = floating_cart.cart_image(request)
-
+    item = Cart_items.objects.filter(user=request.user,product=obj)
+    print(item.exists())
+    if item.exists():
+        already_added = True
+    else:
+        already_added = False
     # Add to Cart
     if request.method=='GET':
         if 'add_to_cart' in request.GET:
-            product_cart = cart(user_id=request.user.id,product_id=obj.id,quantity=request.GET.get('quantity_to_add'))
-            product_cart.save()
+            cart_item = Cart_items(user=request.user,product=obj,quantity=request.GET.get('quantity_to_add'))
+            cart_item.save()
             return redirect(obj)
 
 
@@ -56,8 +57,7 @@ def prod_detail(request,procode):
         'product':obj,
         'images':img,
         'main_image':img[0],
-        'cart_products':cart_products,
-        'cart_images':cart_images
+        'already_added':already_added,
     }
 
     return render(request,'product.html/',context)

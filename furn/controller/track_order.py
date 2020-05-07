@@ -21,18 +21,12 @@ from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
 from furn.controller import display_picture
-from furn.controller import floating_cart
 
 @login_required(login_url='/')
 def track(request):
     profile_picture = display_picture.check_admin(request)
-    # Floating Cart Content
-    cart_products = floating_cart.cart_product(request)
-    cart_images = floating_cart.cart_image(request)
-
+ 
     context = {
         'profile_picture' : profile_picture,
-        'cart_products':cart_products,
-        'cart_images':cart_images
     }
     return render(request,'track_order.html/',context)

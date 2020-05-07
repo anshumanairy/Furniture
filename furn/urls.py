@@ -18,7 +18,8 @@ from furn.controller import your_wishlist
 
 urlpatterns = [
     url(r'^$',register.reg,name="register"),
-    url(r'^cart',cart.bag,name="cart"),
+    url(r'^cart-page',cart.cart,name="cart-page"),
+    # url(r'^cart',cart.bag,name="cart"),
     # url(r'^categories/(?P<category>[a-zA-Z0-9]+$)',categories.category,name="categories"),
     url(r'^categories',categories.category,name="categories"),
     url(r'^checkout',checkout.purchase,name="checkout"),
