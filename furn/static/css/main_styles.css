@@ -1433,6 +1433,14 @@ section
 	outline: none;
 	text-align: center;
 }
+.newsletter_input1
+{
+	height: 25px;
+	border: none;
+	border-bottom: solid 2px #787878;
+	outline: none;
+	text-align: center;
+}
 .newsletter_button
 {
 	position: relative;
