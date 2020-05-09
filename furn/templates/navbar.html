@@ -42,8 +42,8 @@
                 </li>
                 <!-- Search Bar -->
                 <li>
-                  <form method="GET">
-                    <input type="text" class="newsletter_input1" required="required" name="search_bar" value="" placeholder="Search" size="40" style="border-radius:2px;border">
+                  <form method="GET" action="{% url 'search' %}">
+                    <input type="text" class="newsletter_input1" required="required" name="query" value="" placeholder="Search" size="40" style="border-radius:2px;border" required>
                     <input type="submit" name="" value="Search" style="margin-left:10px;cursor:pointer">
                   </form>
                 </li>
@@ -98,10 +98,10 @@
 
             <ul>
               <li class="hassubs1" style="padding-right:20px">
-                {% if profile_picture == '' %}
-                  <a href="#"><img src="/static/profile/pics/empty.png" alt="" style="width:40px;height:40px;border-radius:20px;"></a>
+                {% if user.user_detail.profile_picture %}
+                  <a href="#"><img src="{{ user.user_detail.profile_picture.url }}" alt="" style="width:40px;height:40px;border-radius:20px;"></a>
                 {% else %}
-                  <a href="#"><img src="/media/{{profile_picture}}" alt="" style="width:40px;height:40px;border-radius:20px;"></a>
+                  <a href="#"><img src="/media/Profile/Network-Profile.png" alt="" style="width:40px;height:40px;border-radius:20px;"></a>
                 {% endif %}
                 <ul>
                   <li><a href="{% url 'checkout' %}">Check Out</a></li>

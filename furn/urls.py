@@ -15,10 +15,13 @@ from furn.controller import track_order
 from furn.controller import saved_address
 from furn.controller import your_orders
 from furn.controller import your_wishlist
+from furn.controller import search
+
 
 urlpatterns = [
     url(r'^$',register.reg,name="register"),
     url(r'^cart-page',cart.cart,name="cart-page"),
+    url(r'^search',search.searchProduct,name="search"),
     # url(r'^cart',cart.bag,name="cart"),
     # url(r'^categories/(?P<category>[a-zA-Z0-9]+$)',categories.category,name="categories"),
     url(r'^categories',categories.category,name="categories"),

@@ -1,0 +1,103 @@
+{% include 'base.html' %}
+{% include 'navbar.html' %}
+
+{% block base %}
+
+<link rel="stylesheet" type="text/css" href="/static/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/static/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/static/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="/static/css/categories.css">
+<link rel="stylesheet" type="text/css" href="/static/css/categories_responsive.css">
+
+<body>
+
+	{% block navbar %}
+  {% endblock %}
+
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<p>Some text in the modal.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Products -->
+	<div class="products">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+
+					<!-- Trigger the modal with a button -->
+					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="margin-top:60px">Add Product</button>
+					<!-- Product Sorting -->
+					<div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
+						<div class="results">Showing <span>12</span> results</div>
+						<div class="sorting_container ml-md-auto">
+							<div class="sorting">
+								<ul class="item_sorting">
+									<li>
+										<span class="sorting_text">Sort by</span>
+										<i class="fa fa-chevron-down" aria-hidden="true"></i>
+										<ul>
+											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Default</span></li>
+											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Price</span></li>
+											<li class="product_sorting_btn" data-isotope-option='{ "sortBy": "stars" }'><span>Name</span></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+
+					<div class="product_grid">
+                        {% if products %}
+						<!-- Product -->
+						{% for product in products %}
+							<div class="product">
+								<div class="product_image"><a href="{{ product.get_absolute_url }}"><img src="{{ product.get_main_image.img.url }}" alt=""></a></div>
+			    					<div class="product_content">
+										<div class="product_title"><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></div>
+										<div class="product_price">INR {{ product.selling_price }}</div>
+									</div>
+							</div>
+						{% endfor %}
+                        {% else %}
+                        <h3>Not Found</h3>
+                        {% endif %}
+					</div>
+					<div class="product_pagination">
+						<ul>
+							<li class="active"><a href="#">01.</a></li>
+							<li><a href="#">02.</a></li>
+							<li><a href="#">03.</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<script src="/static/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/static/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="/static/js/categories.js"></script>
+
+{% endblock %}

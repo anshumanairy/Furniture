@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import User
 from .image_model import Image
 # from django.contrib.postgres.fields import ArrayField
@@ -31,6 +32,22 @@ types = (
 
 # def images_directory_path(self, filename):
 #     return 'Furniture_{0}/{1}/{2}'.format('Images',self.id, filename)
+class ProductQuerySet(models.QuerySet):
+    def search(self,query):
+        lookup = (
+            Q(title__icontains = query)|
+            Q(furniture_type__icontains=query)|
+            Q(description__icontains=query)
+        )
+        return self.filter(lookup)
+
+class ProductManager(models.Manager):
+    def get_queryset(self):
+        return ProductQuerySet(self.model,using=self._db)
+    def search(self,query=None):
+        if query is None:
+            return self.get_queryset().none()
+        return self.get_queryset().search(query)
 
 class product_upload(models.Model):
     product_code = models.SlugField(unique=True)
@@ -49,6 +66,7 @@ class product_upload(models.Model):
     breadth = models.IntegerField(default=0)
     height = models.IntegerField(default=0)
 
+    objects = ProductManager()
     # def __str__(self):
     #     return self.title
     @property
