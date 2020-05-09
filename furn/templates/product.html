@@ -11,26 +11,6 @@
 	{% block navbar %}
   {% endblock %}
 
-	<!-- Home -->
-
-	<div class="home">
-		<div class="home_container">
-			<div class="home_background" style="background-image:url(/static/images/categories.jpg)"></div>
-			<div class="home_content_container">
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<div class="home_content">
-								<div class="home_title">Smart Phones<span>.</span></div>
-								<div class="home_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<!-- Product Details -->
 
 	<div class="product_details">
@@ -80,7 +60,7 @@
 									<input id="quantity_input" type="number" min="1" value="1" max="{{product.quantity}}" name="quantity_to_add">
 								</div>
 								{% if already_added %}
-									<a href="{% url 'cart-page' %}"><input type="button" class="button1 button_light1" style="color:blue" name="already_added" value="Already Added Go to Cart"></a>
+									<a href="{% url 'cart-page' %}"><input type="button" class="button1 button_light1" name="already_added" value="Already Added Go to Cart" style="width:200px"></a>
 								{% else %}
 									<input type="submit" class="button1 button_light1" style="color:black" name="add_to_cart" value="Add to Cart">
 								{% endif %}
