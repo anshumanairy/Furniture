@@ -118,13 +118,26 @@ home_content
 .address
 {
   width: 70%;
-  height: 262px;
-	/**z-index: 2; */
-  margin-left:200px;
+  height: 280px;
+	margin-left: auto;
+	margin-right: auto;
+	border:1px solid #ddd;
+	margin-top:30px
+}
+.address_heading
+{
+	border-bottom:1px solid #ddd;
+	height:65px;
+	width:100%;
+	background-color: #f5f5f5;
+	padding-top:10px;
+	padding-left:30px
+}
+.address_body
+{
 	padding-top: 13px;
 	padding-left: 90px;
 	padding-right: 60px;
-  border-color: black;
 }
 .product_info
 {

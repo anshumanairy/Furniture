@@ -39,20 +39,26 @@
     </div>
 
     <!-- address block -->
-    <
-    <div class="address" style="background-color:lightgrey;">
-      <ul>
-        <li><label style="font-size:20px;color:black;">Orders</label></li>
-
-        <!--  {% for pd in product %} -->
-
-          <a href="#">image</a>
-          <ul>
-            <li style="font-size:12px;">Product: {{pd.name}}</li>
-            <li><p style="font-size:9px;">Seller: {{pd.seller}}</p></li>
-          </ul>
-        <!--  {% endfor %} -->
-      </ul>
+    <div class="address">
+      <div class="address_heading">
+        <ul class="row">
+          <li><label style="font-size:15px;color:grey;">Order Placed</label></li>
+          <li style="padding-left:70px"><label style="font-size:15px;color:grey;">Total</label></li>
+          <li style="padding-left:70px">
+            <label style="font-size:15px;color:grey;">Ship To</label>
+            <div style="padding-left:2px;margin-top:-3px">
+              <select class="" name="" style="height:10px;width:50px">
+              </select>
+            </div>
+          </li>
+          <li><label style="font-size:15px;color:grey;">Total</label></li>
+        </ul>
+      </div>
+      <div class="address_body">
+        <ul>
+          <li><label style="font-size:20px;color:black;">Orders</label></li>
+        </ul>
+      </div>
     </div>
 
 </body>
