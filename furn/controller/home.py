@@ -21,8 +21,23 @@ from django.contrib.auth.models import Permission
 from django.utils.timezone import utc
 from django.utils import timezone
 from furn.controller import display_picture
+from furn.models.product_model import product_upload
 
 @login_required(login_url='/')
 def home(request):
     profile_picture = display_picture.check_admin(request)
-    return render(request,'home.html')
+
+    if request.method=='GET':
+        if 'search_bar' in request.GET:
+            search_content = request.GET.get('search_bar')
+            # search_products=[]
+            # obj = product_upload.objects.all()
+            # for product in obj:
+            #     if search_content in product.title:
+            #         search_products.append(product)
+            return redirect('categories')
+
+    context = {
+        'profile_picture' : profile_picture,
+    }
+    return render(request,'home.html',context)
