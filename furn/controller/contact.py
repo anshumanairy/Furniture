@@ -24,9 +24,5 @@ from furn.controller import display_picture
 
 @login_required(login_url='/')
 def contact(request):
-    profile_picture = display_picture.check_admin(request)
-
-    context = {
-        'profile_picture' : profile_picture,
-    }
+    context = {}
     return render(request,'contact.html/',context)

@@ -24,9 +24,7 @@ from furn.controller import display_picture
 
 @login_required(login_url='/')
 def track(request):
-    profile_picture = display_picture.check_admin(request)
  
     context = {
-        'profile_picture' : profile_picture,
     }
     return render(request,'track_order.html/',context)

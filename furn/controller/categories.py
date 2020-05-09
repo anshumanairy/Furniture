@@ -26,7 +26,6 @@ from furn.models.image_model import ImageManager, Image
 
 @login_required(login_url='/')
 def category(request):
-    profile_picture = display_picture.check_admin(request)
     # Floating Cart Content
     obj = product_upload.objects.all()
     products = []
@@ -38,7 +37,6 @@ def category(request):
 
 
     context = {
-        'profile_picture' : profile_picture,
         'products':products,
         'images':images,
     }

@@ -31,9 +31,6 @@ from furn.controller import display_picture
 @login_required(login_url='/')
 def prod_detail(request,procode):
 
-    # Profile Picture for Navbar
-    profile_picture = display_picture.check_admin(request)
-
     # Product Details
     obj = get_object_or_404(product_upload,product_code=procode)
     img = obj.get_images
@@ -53,7 +50,6 @@ def prod_detail(request,procode):
 
 
     context = {
-        'profile_picture' : profile_picture,
         'product':obj,
         'images':img,
         'main_image':img[0],

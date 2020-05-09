@@ -25,7 +25,6 @@ from furn.models.product_model import product_upload
 
 @login_required(login_url='/')
 def home(request):
-    profile_picture = display_picture.check_admin(request)
 
     if request.method=='GET':
         if 'search_bar' in request.GET:
@@ -38,6 +37,5 @@ def home(request):
             return redirect('categories')
 
     context = {
-        'profile_picture' : profile_picture,
     }
     return render(request,'home.html',context)

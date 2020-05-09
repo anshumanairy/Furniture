@@ -25,7 +25,6 @@ from furn.controller import display_picture
 
 @login_required(login_url='/')
 def profile(request):
-    profile_picture = display_picture.check_admin(request)
 
     check = User.objects.get(id = request.user.id)
     username = request.user.username
@@ -42,7 +41,6 @@ def profile(request):
         email = details.email
 
     context = {
-        'profile_picture' : profile_picture,
         'username':username,
         'name':name,
         'gender':gender,

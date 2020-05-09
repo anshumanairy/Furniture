@@ -26,11 +26,9 @@ from furn.controller import display_picture
 
 @login_required(login_url='/')
 def cart(request):
-    profile_picture = display_picture.check_admin(request)
     obj = Cart_items.objects.filter(user=request.user)
     # print(obj)
     context = {
-        'profile_picture' : profile_picture,
         'object' : obj,
     }
     return render(request,'cart.html/',context)
