@@ -41,22 +41,51 @@
     <!-- address block -->
     <div class="address">
       <div class="address_heading">
-        <ul class="row">
-          <li><label style="font-size:15px;color:grey;">Order Placed</label></li>
-          <li style="padding-left:70px"><label style="font-size:15px;color:grey;">Total</label></li>
+        <ul class="row" style="font-size:15px;color:grey;">
+          <li>
+            <ul>
+              <li>Order Placed</li>
+              <li>{Date}</li>
+            </ul>
+          </li>
           <li style="padding-left:70px">
-            <label style="font-size:15px;color:grey;">Ship To</label>
+            <ul>
+              <li>Total</li>
+              <li>{Total}</li>
+            </ul>
+          </li>
+          <li style="padding-left:70px">
+            <label>Ship To</label>
             <div style="padding-left:2px;margin-top:-3px">
               <select class="" name="" style="height:10px;width:50px">
+                <option value="">{Buyers Name}</option>
               </select>
             </div>
           </li>
-          <li><label style="font-size:15px;color:grey;">Total</label></li>
+          <li style="position:absolute;right:15px">
+            <ul>
+              <li>Order ID</li>
+              <li>{Order ID}</li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div class="address_body">
-        <ul>
-          <li><label style="font-size:20px;color:black;">Orders</label></li>
+        <ul style="color:black">
+          <li><label style="font-size:17px;"><b>Delivered {DATE}</b></label></li>
+          <li style="margin-top:-10px"><label style="font-size:12px;">{Who was the package handed to}</label></li>
+        </ul>
+      </div>
+      <div class="address_body" style="margin-left:10px">
+        <ul style="color:black" class="row">
+          <li><img src="/static/profile/pics/empty.png" alt="Product Image" style="height:118px; width:100px;"></li>
+          <li style="margin-left:30px">{Product Details}</li>
+          <li style="position:absolute;right:30px">
+            <ul>
+              <li><input type="submit" name="feedback" value="Leave Seller Feedback"></li>
+              <li style="margin-top:13px"><input type="submit" name="review" value="Write a Product Review"></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
