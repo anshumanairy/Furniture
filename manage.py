@@ -3,7 +3,7 @@
 import os
 import sys
 
-
+#checking mail
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Furniture.settings')
     try:
